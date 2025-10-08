@@ -9,7 +9,7 @@ const ResumeDownload = () => {
     // Simulate the download process
     const link = document.createElement("a");
     link.href =
-      "https://docs.google.com/document/d/1MkqY3eYXJNuxKe6izSTbmEXYSCEFG-Ux/edit?usp=sharing&ouid=107258765975842610472&rtpof=true&sd=true";
+      "https://docs.google.com/document/d/1Suc3jZGJ1Hf4XBo1n6yEsHUy8jVUY036emqd9RFTvuc/edit?usp=sharing";
 
     link.download = "Krunal_Bhanushali_Resume.pdf"; // Optional: Set a custom file name
     document.body.appendChild(link);
