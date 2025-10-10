@@ -31,22 +31,22 @@ const Contact = () => {
     });
   };
   // https://script.google.com/macros/s/AKfycbws-NQdETLmCBtoIZ79nx9H4QifzrX7z4DjaPyujvZWY-1VAEWO5uCNvOAw-Yqix6Pa/exec
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
   e.preventDefault();
   setLoading(true);
 
   const url =
-    "https://script.google.com/macros/s/AKfycbx4D0v0Afz2f0dRmDQ6dkNbawWs76xQnu1g1wwZWl8uqvTV7y7NqNor0DSohHdxAOSq/exec";
+    "https://script.google.com/macros/s/AKfycbyGA2P9zuhyGT1MiOX_1DN0zYSyez8nM7zDMD82i0ZZeIaK-3MoRVpQZ0j9yPIfOEHv/exec";
 
   try {
+    const formData = new FormData();
+    formData.append("name", form.name);
+    formData.append("email", form.email);
+    formData.append("message", form.message);
+
     const res = await fetch(url, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: form.name,
-        email: form.email,
-        message: form.message,
-      }),
+      body: formData, // 🚀 avoids OPTIONS preflight
     });
 
     const json = await res.json();
@@ -64,6 +64,7 @@ const Contact = () => {
     setLoading(false);
   }
 };
+
 
 
   return (
