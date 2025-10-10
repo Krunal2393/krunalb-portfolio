@@ -32,38 +32,39 @@ const Contact = () => {
   };
   // https://script.google.com/macros/s/AKfycbws-NQdETLmCBtoIZ79nx9H4QifzrX7z4DjaPyujvZWY-1VAEWO5uCNvOAw-Yqix6Pa/exec
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  e.preventDefault();
+  setLoading(true);
 
-    const url =
-      "https://script.google.com/macros/s/AKfycbws-NQdETLmCBtoIZ79nx9H4QifzrX7z4DjaPyujvZWY-1VAEWO5uCNvOAw-Yqix6Pa/exec";
+  const url =
+    "https://script.google.com/macros/s/AKfycby-CnBawiPVby-zROxkjLSaYAtGsWkYgrUPfkvHNMLX93Xy-1UNigg23RH8CnOBjoPa/exec";
 
-    try {
-      const res = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          message: form.message,
-        }),
-      });
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        message: form.message,
+      }),
+    });
 
-      const json = await res.json();
+    const json = await res.json();
 
-      if (json.status === "success") {
-        alert("✅ Your message has been sent successfully!");
-        setForm({ name: "", email: "", message: "" });
-      } else {
-        throw new Error(json.message || "Unknown error");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("❌ Something went wrong while saving your message.");
-    } finally {
-      setLoading(false);
+    if (json.status === "success") {
+      alert("✅ Your message has been sent successfully!");
+      setForm({ name: "", email: "", message: "" });
+    } else {
+      throw new Error(json.message || "Unknown error");
     }
-  };
+  } catch (err) {
+    console.error("Form submit error:", err);
+    alert("❌ Something went wrong while saving your message.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div
