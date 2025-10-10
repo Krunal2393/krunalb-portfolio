@@ -36,7 +36,7 @@ const Contact = () => {
   setLoading(true);
 
   const url =
-    "https://script.google.com/macros/s/AKfycby-CnBawiPVby-zROxkjLSaYAtGsWkYgrUPfkvHNMLX93Xy-1UNigg23RH8CnOBjoPa/exec";
+    "https://script.google.com/macros/s/AKfycbx4D0v0Afz2f0dRmDQ6dkNbawWs76xQnu1g1wwZWl8uqvTV7y7NqNor0DSohHdxAOSq/exec";
 
   try {
     const res = await fetch(url, {
